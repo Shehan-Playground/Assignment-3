@@ -60,37 +60,57 @@ public class studentDetails {
 
             else statusMarks[itr] = COLOR+"1m"+BOLD+"Fail"+RESET;
 
-            System.out.println(statusMarks[itr]);
         }
 
         // Styling the subject name
         for (int itr=0; itr<3; itr++) {
 
-            // String x = Integer.parseInt(subjectNames[itr].substring(4));
-            String x = subjectNames[itr].substring(4);
-            System.out.println(x);
-            // subjectNames[itr] = subjectNames[itr].substring(0,3)+ String.format("%03d",x);
+            subjectNames[itr] = subjectNames[itr].substring(0,3)+String.format("%03d", Integer.parseInt(subjectNames[itr].substring(3)));
         }
 
         // Display the result
         System.out.println();
-        System.out.print("-".repeat(53));
+        System.out.print("+");
+        System.out.print("-".repeat(51));
+        System.out.print("+");
         System.out.println();
+
         System.out.printf("| Name: %-57s|\n",name);
         System.out.printf("| Age: %-45s|\n",ageDisplay);
         System.out.printf("| Status: %-55s|\n",status);
         System.out.printf("| Total: %-15.2f Avg: %-22s|\n",total, avgString);
 
-        System.out.print("-".repeat(53));
+        System.out.print("+");
+        System.out.print("-".repeat(14));
+        System.out.print("+");
+        System.out.print("-".repeat(14));
+        System.out.print("+");
+        System.out.print("-".repeat(21));
+        System.out.print("+");
         System.out.println();
+
         System.out.printf("| %-13s| %-13s| %-19s |\n", "Subject", "Marks", "Status");
-        System.out.print("-".repeat(53));
+
+        System.out.print("+");
+        System.out.print("-".repeat(14));
+        System.out.print("+");
+        System.out.print("-".repeat(14));
+        System.out.print("+");
+        System.out.print("-".repeat(21));
+        System.out.print("+");
         System.out.println();
         
         for (int itr=0; itr < 3; itr++) {
             System.out.printf("| %-13s| %-13.2f| %-32s |\n", subjectNames[itr], subjectMarks[itr], statusMarks[itr]);
         }
-        System.out.print("-".repeat(53));
+
+        System.out.print("+");
+        System.out.print("-".repeat(14));
+        System.out.print("+");
+        System.out.print("-".repeat(14));
+        System.out.print("+");
+        System.out.print("-".repeat(21));
+        System.out.print("+");
         System.out.println();
     }
 
