@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class studentDetails {
@@ -73,9 +74,15 @@ public class studentDetails {
                     System.out.println(REDCOLOR+"Invalid input subject name"+RESET);
                     break mainBlock; 
 
+                } else if (Arrays.asList(subjectNames).contains(subjectName)){
+
+                    validity = false;
+                    System.out.println(REDCOLOR+"Cannot add same subject twice"+RESET);
+                    break mainBlock;
+
                 } else subjectNames[itr] = subjectName;
                 
-                // Subject marks inout
+                // Subject marks input
 
                 System.out.printf("Enter your marks %s: ", itr+1);
                 double subjectMark = scanner.nextDouble();
