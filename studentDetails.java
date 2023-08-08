@@ -2,17 +2,120 @@ import java.util.Scanner;
 
 public class studentDetails {
 
-    public static void tableLines () {
+    /* Scanning input from System.in */
+
+    public static final Scanner scanner = new Scanner(System.in);
+
+    /* Main function and get data from System input and data validations */
+
+    public static void main(String[] args) {
+
+        boolean validity = true;
+        String name = "";
+        int age = 0;
+        String[] subjectNames = new String[3];
+        double[] subjectMarks = new double[3];
+
+        // Main block
+        mainBlock:
+        {
+            if (true) break mainBlock;
+
+            // Name input
+
+            System.out.print("Enter your name: ");
+            name = scanner.nextLine();
+
+            name = name.strip();
+
+            // Name inout validation
+
+            if (name.length() == 0) {
+
+                validity = false;
+                System.out.println("Invalid input name");
+                break mainBlock;
+            }
+
+            // Age input
+
+            System.out.print("Enter your age: ");
+            age = scanner.nextInt();
+            scanner.nextLine();
+
+            // Age inout validation
+
+            if (age < 10 || age > 18 ){
+
+                validity = false;
+                System.out.println("Invalid input age");
+                break mainBlock;
+            }
+
+            // Looping for taking values of subject names and their marks
+
+            for (int itr=0; itr<3; itr++) {
+
+                // Subject name input
+
+                System.out.printf("Enter your subject %s: ",itr+1);
+                String subjectName = scanner.nextLine();
+
+                // Subject name input validation
+
+                subjectName = subjectName.strip();
+                if (!subjectName.startsWith("SE-") || (subjectName.length() == 3 || subjectName.substring(3).length() >3)) {
+
+                    validity = false;
+                    System.out.println("Invalid input subject name");
+                    break mainBlock; 
+
+                } else subjectNames[itr] = subjectName;
+                
+                // Subject marks inout
+
+                System.out.printf("Enter your marks %s: ", itr+1);
+                double subjectMark = scanner.nextDouble();
+                scanner.nextLine();
+
+                // Subject marks input validation
+
+                if (subjectMark > 100 || subjectMark < 0) {
+
+                    validity = false;
+                    System.out.println("Invalid input marks");
+                    break mainBlock;
+
+                } else subjectMarks[itr] = subjectMark;
+
+            }
+
+        }
+
+        testData:
+        {
+            // if (true) break testData;
+            name = "Shehan rathnayake";
+            age = 13;
+            subjectNames[0] = "SE-1";
+            subjectNames[1] = "SE-2";
+            subjectNames[2] = "SE-3";
+
+            subjectMarks[0] = 88.523;
+            subjectMarks[1] = 68;
+            subjectMarks[2] = 40;
+        }
         
-        System.out.print("+");
-        System.out.print("-".repeat(14));
-        System.out.print("+");
-        System.out.print("-".repeat(14));
-        System.out.print("+");
-        System.out.print("-".repeat(21));
-        System.out.print("+");
-        System.out.println();
+        
+        // Calling display function to display the result
+
+        if (validity) display(name, age, subjectNames, subjectMarks);
+
+        else System.out.println("---------------------------------");
+        
     }
+
+    /* Displaying results with string formatting */
 
     public static void display(String name, int age, String[] subjectNames, double[] subjectMarks) {
 
@@ -45,6 +148,7 @@ public class studentDetails {
         else if (avg >54) status = COLOR+"3m"+BOLD+"Pass"+RESET;
 
         else status = COLOR+"1m"+BOLD+"Fail"+RESET;
+
 
         //Checking the status of individual marks
 
@@ -94,102 +198,18 @@ public class studentDetails {
         tableLines();
     }
 
+    /* Display table middle and bottom lines */
 
-
-    public static final Scanner scanner = new Scanner(System.in);
-    public static void main(String[] args) {
-
-        boolean validity = true;
-        String name = "";
-        int age = 0;
-        String[] subjectNames = new String[3];
-        double[] subjectMarks = new double[3];
-
-        mainBlock:
-        {
-            if (true) break mainBlock;
-            // Name input
-            System.out.print("Enter your name: ");
-            name = scanner.nextLine();
-
-            name = name.strip();
-
-            // Name inout validation
-            if (name.length() == 0) {
-
-                validity = false;
-                System.out.println("Invalid input name");
-                break mainBlock;
-            }
-
-            // Age input
-            System.out.print("Enter your age: ");
-            age = scanner.nextInt();
-            scanner.nextLine();
-
-            // Age inout validation
-            if (age < 10 || age > 18 ){
-
-                validity = false;
-                System.out.println("Invalid input age");
-                break mainBlock;
-            }
-
-            // Looping for taking values of subject names and their marks
-            for (int itr=0; itr<3; itr++) {
-
-                // Subject name input
-                System.out.printf("Enter your subject %s: ",itr+1);
-                String subjectName = scanner.nextLine();
-
-                // Subject name input validation
-                subjectName = subjectName.strip();
-                if (!subjectName.startsWith("SE-") || (subjectName.length() == 3 || subjectName.substring(3).length() >3)) {
-
-                    validity = false;
-                    System.out.println("Invalid input subject name");
-                    break mainBlock; 
-
-                } else subjectNames[itr] = subjectName;
-                
-                // Subject marks inout
-                System.out.printf("Enter your marks %s: ", itr+1);
-                double subjectMark = scanner.nextDouble();
-                scanner.nextLine();
-
-                // Subject marks input validation
-                if (subjectMark > 100 || subjectMark < 0) {
-
-                    validity = false;
-                    System.out.println("Invalid input marks");
-                    break mainBlock;
-
-                } else subjectMarks[itr] = subjectMark;
-
-            }
-
-        }
-
-        testData:
-        {
-            // if (true) break testData;
-            name = "Shehan rathnayake";
-            age = 13;
-            subjectNames[0] = "SE-1";
-            subjectNames[1] = "SE-2";
-            subjectNames[2] = "SE-3";
-
-            subjectMarks[0] = 88.523;
-            subjectMarks[1] = 68;
-            subjectMarks[2] = 40;
-        }
+    public static void tableLines () {
         
-        
-        // Calling display finction to display the result
-        if (validity) display(name, age, subjectNames, subjectMarks);
-
-        else System.out.println("---------------------------------");
-        
+        System.out.print("+");
+        System.out.print("-".repeat(14));
+        System.out.print("+");
+        System.out.print("-".repeat(14));
+        System.out.print("+");
+        System.out.print("-".repeat(21));
+        System.out.print("+");
+        System.out.println();
     }
 
 }
