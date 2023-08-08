@@ -88,7 +88,7 @@ public class studentDetails {
         System.out.println();
         
         for (int itr=0; itr < 3; itr++) {
-            System.out.printf("| %-13s| %-13s| %-32s |\n", subjectNames[itr], subjectMarks[itr], statusMarks[itr]);
+            System.out.printf("| %-13s| %-13.2f| %-32s |\n", subjectNames[itr], subjectMarks[itr], statusMarks[itr]);
         }
         System.out.print("-".repeat(53));
         System.out.println();
@@ -175,7 +175,7 @@ public class studentDetails {
         subjectNames[1] = "SE-2";
         subjectNames[2] = "SE-3";
 
-        subjectMarks[0] = 88;
+        subjectMarks[0] = 88.523;
         subjectMarks[1] = 68;
         subjectMarks[2] = 40;
         
