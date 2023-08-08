@@ -16,14 +16,17 @@ public class studentDetails {
         String[] subjectNames = new String[3];
         double[] subjectMarks = new double[3];
 
+        final String REDCOLOR = "\033[31m";
+        final String RESET = "\033[0m";
+
         // Main block
         mainBlock:
         {
-            if (true) break mainBlock;
+            // if (true) break mainBlock;
 
             // Name input
 
-            System.out.print("Enter your name: ");
+            System.out.print("\nEnter your name: ");
             name = scanner.nextLine();
 
             name = name.strip();
@@ -33,7 +36,7 @@ public class studentDetails {
             if (name.length() == 0) {
 
                 validity = false;
-                System.out.println("Invalid input name");
+                System.out.println(REDCOLOR+"Invalid input name"+RESET);
                 break mainBlock;
             }
 
@@ -48,7 +51,7 @@ public class studentDetails {
             if (age < 10 || age > 18 ){
 
                 validity = false;
-                System.out.println("Invalid input age");
+                System.out.println(REDCOLOR+"Invalid input age"+RESET);
                 break mainBlock;
             }
 
@@ -67,7 +70,7 @@ public class studentDetails {
                 if (!subjectName.startsWith("SE-") || (subjectName.length() == 3 || subjectName.substring(3).length() >3)) {
 
                     validity = false;
-                    System.out.println("Invalid input subject name");
+                    System.out.println(REDCOLOR+"Invalid input subject name"+RESET);
                     break mainBlock; 
 
                 } else subjectNames[itr] = subjectName;
@@ -83,7 +86,7 @@ public class studentDetails {
                 if (subjectMark > 100 || subjectMark < 0) {
 
                     validity = false;
-                    System.out.println("Invalid input marks");
+                    System.out.println(REDCOLOR+"Invalid input marks"+RESET);
                     break mainBlock;
 
                 } else subjectMarks[itr] = subjectMark;
@@ -92,21 +95,6 @@ public class studentDetails {
 
         }
 
-        testData:
-        {
-            // if (true) break testData;
-            name = "Shehan rathnayake";
-            age = 13;
-            subjectNames[0] = "SE-1";
-            subjectNames[1] = "SE-2";
-            subjectNames[2] = "SE-3";
-
-            subjectMarks[0] = 88.523;
-            subjectMarks[1] = 68;
-            subjectMarks[2] = 40;
-        }
-        
-        
         // Calling display function to display the result
 
         if (validity) display(name, age, subjectNames, subjectMarks);
@@ -141,11 +129,11 @@ public class studentDetails {
         // Styling the status
 
         String status;
-        if (avg > 75) status = COLOR+"4m"+BOLD+"Distinguish Pass"+RESET;
+        if (avg >= 75) status = COLOR+"4m"+BOLD+"Distinguish Pass"+RESET;
 
-        else if (avg>64) status = COLOR+"2m"+BOLD+"Credit Pass"+RESET;
+        else if (avg>=65) status = COLOR+"2m"+BOLD+"Credit Pass"+RESET;
     
-        else if (avg >54) status = COLOR+"3m"+BOLD+"Pass"+RESET;
+        else if (avg >=55) status = COLOR+"3m"+BOLD+"Pass"+RESET;
 
         else status = COLOR+"1m"+BOLD+"Fail"+RESET;
 
@@ -155,11 +143,11 @@ public class studentDetails {
         String[] statusMarks = new String [3];
 
         for (int itr=0; itr<3; itr++) {
-            if (subjectMarks[itr] > 75) statusMarks[itr] = COLOR+"4m"+BOLD+"Distinguished Pass"+RESET;
+            if (subjectMarks[itr] >= 75) statusMarks[itr] = COLOR+"4m"+BOLD+"Distinguished Pass"+RESET;
 
-            else if (subjectMarks[itr]>64) statusMarks[itr] = COLOR+"2m"+BOLD+"Credit Pass"+RESET;
+            else if (subjectMarks[itr]>=65) statusMarks[itr] = COLOR+"2m"+BOLD+"Credit Pass"+RESET;
         
-            else if (subjectMarks[itr] >54) statusMarks[itr] = COLOR+"3m"+BOLD+"Pass"+RESET;
+            else if (subjectMarks[itr] >=55) statusMarks[itr] = COLOR+"3m"+BOLD+"Pass"+RESET;
 
             else statusMarks[itr] = COLOR+"1m"+BOLD+"Fail"+RESET;
 
